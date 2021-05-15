@@ -33,6 +33,8 @@ export class HomePage implements OnInit {
     spaceBetween: 10
   };
 
+  showLocationDetail = false;
+
   constructor(private http: HttpClient) {}
   
   ngOnInit() {
@@ -51,6 +53,11 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 2000);
+  }
+
+  onScroll(event) {
+    const offset = event.detail.scrollTop;
+    this.showLocationDetail = offset > 50;
   }
 
 }
