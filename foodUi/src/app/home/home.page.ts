@@ -12,8 +12,29 @@ export class HomePage implements OnInit {
   highlights = [];
   featured = [];
 
-  constructor(private http: HttpClient) {}
+  catSlideOpts = {
+    freeMode: true,
+    slidesPerView: 3.5,
+    slidesOffsetBefore: 11,
+    spaceBetween: 10
+  };
 
+  highlightSlideOpts = {
+    centerSlides: true,
+    loop: true,
+    slidesPerView: 1.05,
+    slidesOffsetBefore: 11,
+    spaceBetween: 10
+  };
+
+  featuredSlidesOpts = {
+    freeMode: true,
+    slidesPerView: 1.2,
+    spaceBetween: 10
+  };
+
+  constructor(private http: HttpClient) {}
+  
   ngOnInit() {
     this.http.get('https://devdactic.fra1.digitaloceanspaces.com/foodui/home.json')
       .subscribe((res : any) => {
@@ -24,6 +45,12 @@ export class HomePage implements OnInit {
         this.featured = res.featured;
       });
     
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
   }
 
 }
