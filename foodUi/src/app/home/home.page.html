@@ -53,8 +53,7 @@
   </ion-text>
 
   <ion-slides [options]="featuredSlidesOpts">
-    <ion-slide *ngFor="let f of featured" class="featured-slide" 
-    routerLink="/details">
+    <ion-slide *ngFor="let f of featured" class="featured-slide" routerLink="/details">
       <img [src]="f.img" />
 
       <div class="info">
