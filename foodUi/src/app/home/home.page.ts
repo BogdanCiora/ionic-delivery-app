@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,10 @@ export class HomePage implements OnInit {
 
   showLocationDetail = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private _router: Router,
+    ) {}
   
   ngOnInit() {
     this.http.get('https://devdactic.fra1.digitaloceanspaces.com/foodui/home.json')
@@ -58,6 +62,10 @@ export class HomePage implements OnInit {
   onScroll(event) {
     const offset = event.detail.scrollTop;
     this.showLocationDetail = offset > 50;
+  }
+
+  navigateToPage(name: string) {
+    this._router.navigate(['/details']);
   }
 
 }
