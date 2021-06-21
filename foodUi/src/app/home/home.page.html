@@ -53,7 +53,7 @@
   </ion-text>
 
   <ion-slides [options]="featuredSlidesOpts">
-    <ion-slide *ngFor="let f of featured" class="featured-slide" routerLink="/details">
+    <ion-slide *ngFor="let f of featured" class="featured-slide" (click)="navigateToPage(f.name)">
       <img [src]="f.img" />
 
       <div class="info">
@@ -79,13 +79,13 @@
   </ion-slides>
 
   <ion-slides [options]="highlightSlideOpts">
-    <ion-slide *ngFor="let h of highlights">
+    <ion-slide *ngFor="let h of highlights | slice: 1">
       <img [src]="h.img" />
     </ion-slide>
   </ion-slides>
 
   <ion-slides [options]="highlightSlideOpts">
-    <ion-slide *ngFor="let h of highlights">
+    <ion-slide *ngFor="let h of highlights | slice: 2">
       <img [src]="h.img" />
     </ion-slide>
   </ion-slides>
